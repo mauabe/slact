@@ -38,4 +38,4 @@ export const REACTION_OBJECTS = [
     type: 'REACTION_BOMB', 
     emoji: '💣'
   }
-]
+];
