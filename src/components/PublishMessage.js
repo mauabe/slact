@@ -8,7 +8,10 @@ class PublishMessage extends Component {
   updateText = event => this.setState({ text: event.target.value })
 
   publishMessage = () => {
-    this.context.pubsub.publish(newMessage(this.state.text));
+    const { text } = this.state;
+    const { username } = this.props;
+
+    this.context.pubsub.publish(newMessage({text, username}));
   }
 
   handleKeyPress = event => {
@@ -20,7 +23,7 @@ class PublishMessage extends Component {
 
     return (
     <div>
-      <h3>Got somehting to say></h3>
+      <h3> Got something to say? </h3>
       <input onChange={this.updateText} onKeyPress={this.handleKeyPress}/>
       {' '}
       <button onClick={this.publishMessage}>Publish it!</button>
@@ -28,8 +31,8 @@ class PublishMessage extends Component {
     )
   }
 
-  static contextType = PubSubContext
+  static contextType = PubSubContext;
 }
 
 
-export default PublishMessage;
+export default connect(({username}) => ({username}))(PublishMessage);

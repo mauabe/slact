@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
 import messagesReducer from './messages';
+import usernameReducer from  './username';
+
 
 
 export default combineReducers({
-  messages: messagesReducer
+  messages: messagesReducer,
+  username: usernameReducer
 });
