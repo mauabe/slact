@@ -1,4 +1,4 @@
-import React from'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -30,7 +30,7 @@ pubsub.addListener({
 })
 
 setTimeout(() => {
-   pubsub.publish(newMessage('Hello Duck'));
+   pubsub.publish(newMessage({text: 'Hello Duck', username: ' Mauricio' }));
 }, 1000);
 
 ReactDOM.render(
