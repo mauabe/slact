@@ -1,23 +1,22 @@
 import { REACTION_OBJECTS } from '../actions/types';
 
 const REACTION_TYPES = REACTION_OBJECTS.map(
-  REACTION_OBJECT => REACTION_OBJECT.REACTION_TYPE
+  REACTION_OBJECT => REACTION_OBJECT.type
 );
 
-
 const reactionsReducer = (state = {}, action) => {
- if(REACTION_TYPES.includes(action.type)){
-   const { messageId } = action.item;
+  if (REACTION_TYPES.includes(action.type)) {
+    const { messageId } = action.item;
+    const messageReactions = state[messageId];
 
-   const messageReactions = state[messageId];
+    if (messageReactions) {
+      return { ...state, [messageId]: [...messageReactions, action.item] }
+    }
 
-   if(messageReaction){
-     return { ...state, [messageId]: [ ...messageReactions, action.item] }
-   }
+    return { ...state, [messageId]: [action.item] };
+  }
 
-   return { ...state, [messageId]: [action.item] };
- }
- return state;
+  return state;
 }
 
 export default reactionsReducer;
