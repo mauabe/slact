@@ -10,9 +10,11 @@ const SetUsername = ({ setUsername }) => {
     </div>
   )
 };
+
 const mapDispatchToProps = dispatch => {
   return {
     setUsername: event => dispatch(setUsername(event.target.value))
   }
 }
-export default connect(null, mapDispatchToProps)(SetUsername)
+
+export default connect(null, mapDispatchToProps)(SetUsername);
